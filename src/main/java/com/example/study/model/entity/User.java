@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor//기본 생성자
 @Entity // ==table
 //@Table(name = "user") // 클래스이름과 테이블 이름이 같으면 생략 가능하다.
 public class User {
