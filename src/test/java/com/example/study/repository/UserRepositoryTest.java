@@ -1,13 +1,16 @@
 package com.example.study.repository;
 
 import com.example.study.model.entity.User;
+import lombok.AllArgsConstructor;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -36,18 +39,42 @@ public class UserRepositoryTest {
 
   @Test
   public void read() {
-    Optional<User> user = userRepository.findById(2L);
+    Optional<User> user = userRepository.findById(1L);
 
-    user.ifPresent(selectUser -> { // 있으면 출력하겠다.
+    user.ifPresent(selectUser -> { // 있으면
       System.out.println("user : " + selectUser);
+      System.out.println("email : " + selectUser.getEmail());
     });
   }
 
+  @Test
   public void update() {
+    Optional<User> user = userRepository.findById(1L);
+
+    user.ifPresent(selectUser -> { // 있으면
+      selectUser.setAccount("PPPP");
+      selectUser.setUpdatedAt(LocalDateTime.now());
+      selectUser.setUpdatedBy("update method()");
+
+    });
 
   }
 
-  public void delete() {
+
+  @Test
+  public void delete(Long id) {
+
+    Optional<User> user = userRepository.findById(1L);
+
+    Assertions.assertTrue(user.isPresent()); // true
+
+    user.ifPresent(selectuser -> {
+      userRepository.delete(selectuser);
+    });
+
+    Optional<User> deleteUser = userRepository.findById(1L);
+
+    Assertions.assertFalse(deleteUser.isPresent()); //false
 
   }
 
