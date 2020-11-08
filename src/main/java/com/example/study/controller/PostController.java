@@ -20,6 +20,7 @@ public class PostController {
 
 
   /*rest api 에서는 이렇게 사용하지는 않음 */
+  /*pathvariable을 많이 사용함*/
   @PutMapping("/putMethod")
   public void put() {
 
