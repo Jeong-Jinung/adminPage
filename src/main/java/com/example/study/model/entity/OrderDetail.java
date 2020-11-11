@@ -4,17 +4,16 @@ import com.mysql.cj.log.Log;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity // order_detail
+@ToString(exclude = {"user", "item"}) // 연관관계 설정에 대해서는 exclude 시켜주는게 좋음
 public class OrderDetail {
 
   @Id
@@ -23,8 +22,12 @@ public class OrderDetail {
 
   private LocalDateTime orderAt;
 
-  private Long userId;
+  // N : 1 -> order 기준으로 생각하기
+  @ManyToOne
+  private User user;
 
-  private Long itemId;
+  // N : 1
+  @ManyToOne
+  private Item item;
 
 }

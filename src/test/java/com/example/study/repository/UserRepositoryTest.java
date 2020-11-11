@@ -1,5 +1,6 @@
 package com.example.study.repository;
 
+import com.example.study.model.entity.Item;
 import com.example.study.model.entity.User;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Assertions;
@@ -8,9 +9,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.sound.midi.SysexMessage;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -38,12 +41,16 @@ public class UserRepositoryTest {
   }
 
   @Test
+  @Transactional
   public void read() {
-    Optional<User> user = userRepository.findById(1L);
+    // select * from user where id = ?
+    Optional<User> user = userRepository.findById(7L);
 
     user.ifPresent(selectUser -> { // 있으면
-      System.out.println("user : " + selectUser);
-      System.out.println("email : " + selectUser.getEmail());
+      selectUser.getOrderDetailList().stream().forEach((detail ->{
+        Item item = detail.getItem();
+        System.out.println(item);
+      }));
     });
   }
 
