@@ -1,21 +1,22 @@
 package com.example.study.model.entity;
 
-import com.mysql.cj.log.Log;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity // order_detail
-//@ToString(exclude = {"user", "item"}) // 연관관계 설정에 대해서는 exclude 시켜주는게 좋음
-public class OrderDetail {
+@Data
+@Entity
+public class OrderGroup {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +24,21 @@ public class OrderDetail {
 
   private String status;
 
-  private LocalDateTime orderAt;
+  private String orderType; // 주문의 형태 - 일괄 / 개별
 
-  private LocalDateTime arrivalDate;
+  private String revAddress;
 
-  private String quantity;
+  private String revName;
+
+  private String paymentType; // 카드 / 현금
 
   private BigDecimal totalPrice;
+
+  private Integer totalQuantity;
+
+  private LocalDateTime registeredAt;
+
+  private LocalDateTime unregisteredAt;
 
   private LocalDateTime createdAt;
 
@@ -38,13 +47,5 @@ public class OrderDetail {
   private LocalDateTime updatedAt;
 
   private String updatedBy;
-
-  // N : 1 -> order 기준으로 생각하기
-//  @ManyToOne
-//  private User user;
-
-  // N : 1
-//  @ManyToOne
-//  private Item item;
 
 }

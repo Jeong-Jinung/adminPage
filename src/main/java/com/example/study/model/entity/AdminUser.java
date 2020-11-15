@@ -3,18 +3,18 @@ package com.example.study.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.criterion.Order;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
-import java.util.List;
 
-@Data
+@NoArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor//기본 생성자
-@Entity // ==table
-//@Table(name = "user") // 클래스이름과 테이블 이름이 같으면 생략 가능하다.
-public class User {
+@Data
+@Entity
+public class AdminUser {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +26,13 @@ public class User {
 
   private String status;
 
-  private String email;
+  private String role;
 
-  private String phoneNumber;
+  private LocalDateTime lastLoginAt;
+
+  private LocalDateTime passwordUpdatedAt;
+
+  private int loginFailCount;
 
   private LocalDateTime registeredAt;
 
