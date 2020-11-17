@@ -29,8 +29,6 @@ public class Partner {
 
   private String callCenter;
 
-  private String phoneNumber;
-
   private String partnerNumber;
 
   private String businessNumber;
@@ -48,5 +46,7 @@ public class Partner {
   private LocalDateTime updatedAt;
 
   private String updatedBy;
+
+  private Long categoryId;
 
 }
