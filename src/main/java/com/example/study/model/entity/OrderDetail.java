@@ -1,10 +1,8 @@
 package com.example.study.model.entity;
 
-import com.mysql.cj.log.Log;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

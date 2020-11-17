@@ -2,7 +2,6 @@ package com.example.study.repository;
 
 
 import com.example.study.model.entity.Item;
-import com.example.study.repository.ItemRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
