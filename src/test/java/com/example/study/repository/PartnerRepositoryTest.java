@@ -46,7 +46,7 @@ public class PartnerRepositoryTest {
     partner.setCategoryId(categoryId);
 
     Partner newPartner = partnerRepository.save(partner);
-    Assertions.assertNotNull(newPartner);
-    Assertions.assertEquals(newPartner.getName(), name);
+    Assertions.assertNotNull(newPartner); // null이 아니여야 한다.
+    Assertions.assertEquals(newPartner.getName(), name); // 두개의 값을 비교
   }
 }
