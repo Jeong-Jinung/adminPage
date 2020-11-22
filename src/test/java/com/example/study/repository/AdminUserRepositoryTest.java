@@ -1,8 +1,6 @@
 package com.example.study.repository;
 
-
-import com.example.study.model.entity.OrderDetail;
-import org.junit.jupiter.api.Assertions;
+import com.example.study.model.entity.AdminUser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,27 +11,20 @@ import java.time.LocalDateTime;
 
 @DataJpaTest                                                                    // JPA 테스트 관련 컴포넌트만 Import
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)    // 실제 db 사용
-@DisplayName("OderDetailRepositoryTest 테스트")
-public class OderDetailRepositoryTest {
+@DisplayName("AdminUserRepositoryTest 테스트")
+public class AdminUserRepositoryTest {
 
   @Autowired
-  private OrderDetailRepository orderDetailRepository;
+  private AdminUserRepository adminUserRepository;
 
   @Test
-  public void create(){
-    OrderDetail orderDetail = new OrderDetail();
-
-    orderDetail.setOrderAt(LocalDateTime.now());
-
-    //어떤 사람?
-    //orderDetail.setUserId(7L);
-
-    //어떤 상품?
-    //orderDetail.setItemId(1L);
-
-    OrderDetail newOrderDetail = orderDetailRepository.save(orderDetail);
-
-    Assertions.assertNotNull(newOrderDetail);
+  public void create() {
+    AdminUser adminUser = new AdminUser();
+    adminUser.setAccount("AdminUser01");
+    adminUser.setPassword("adminUser01");
+    adminUser.setStatus("REGISTERED");
+    adminUser.setRole("PARTNER");
+    adminUser.setCreatedAt(LocalDateTime.now());
+    adminUser.setCreatedBy("AdminServer");
   }
-
 }
