@@ -24,7 +24,7 @@ public class AdminUserRepositoryTest {
     adminUser.setPassword("adminUser01");
     adminUser.setStatus("REGISTERED");
     adminUser.setRole("PARTNER");
-    adminUser.setCreatedAt(LocalDateTime.now());
-    adminUser.setCreatedBy("AdminServer");
+//    adminUser.setCreatedAt(LocalDateTime.now());
+//    adminUser.setCreatedBy("AdminServer");
   }
 }
