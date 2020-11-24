@@ -8,7 +8,7 @@ import com.example.study.model.network.response.UserApiResponse;
 import com.example.study.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.*;
 import java.time.LocalDateTime;
 
 @Service
@@ -45,7 +45,13 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 
   @Override
   public Header<UserApiResponse> read(Long id) {
-    return null;
+    // id -> repository getOne, getById
+//     Optional<User> optional = userRepository.findById(id);
+    // user -> userApiResponse return
+
+    return userRepository.findById(id)
+            .map(user -> response(user))
+            .orElseGet(() -> Header.ERROR("데이터 없음"));
   }
 
   @Override
