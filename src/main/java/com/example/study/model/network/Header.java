@@ -1,6 +1,7 @@
 package com.example.study.model.network;
 
 
+import com.example.study.model.network.request.UserApiRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,6 +27,7 @@ public class Header<T> {
   private T data;
 
   // OK
+  //제네릭 메소드 -> <타입파라미터> 리턴타입 메소드명(매개변수)
   public static <T> Header<T> OK(){
     return (Header<T>)Header.builder()
             .transactionTime(LocalDateTime.now())
@@ -36,7 +38,7 @@ public class Header<T> {
 
   //DATA OK
   public static <T> Header<T> OK(T data){
-    return (Header<T>)Header.builder()
+    return (Header<T>) Header.builder()
             .transactionTime(LocalDateTime.now())
             .resultCode("OK")
             .description("OK")
