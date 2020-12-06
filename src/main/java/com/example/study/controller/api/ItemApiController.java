@@ -31,7 +31,7 @@ public class ItemApiController implements CrudInterface<ItemApiRequest, ItemApiR
   @Override
   @PutMapping("") // api/time
   public Header<ItemApiResponse> update(@RequestBody Header<ItemApiRequest> request) {
-    return null;
+    return itemApiLogicService.update(request);
   }
 
   @Override
