@@ -76,6 +76,8 @@ public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemAp
 
   @Override
   public Header delete(Long id) {
+    
+    //id 를 받아와서 삭제
     return null;
   }
 
