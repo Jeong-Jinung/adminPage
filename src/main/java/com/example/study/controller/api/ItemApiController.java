@@ -2,6 +2,7 @@ package com.example.study.controller.api;
 
 import com.example.study.controller.CrudController;
 import com.example.study.ifc.CrudInterface;
+import com.example.study.model.entity.Item;
 import com.example.study.model.network.Header;
 import com.example.study.model.network.request.ItemApiRequest;
 import com.example.study.model.network.response.ItemApiResponse;
@@ -14,15 +15,6 @@ import javax.annotation.PostConstruct;
 
 @RestController
 @RequestMapping("api/item")
-public class ItemApiController extends CrudController<ItemApiRequest, ItemApiResponse> {
-
-  @Autowired
-  private ItemApiLogicService itemApiLogicService;
-
-  @PostConstruct
-  public void init(){
-    this.baseService = itemApiLogicService;
-  }
-
+public class ItemApiController extends CrudController<ItemApiRequest, ItemApiResponse, Item> {
 
 }
